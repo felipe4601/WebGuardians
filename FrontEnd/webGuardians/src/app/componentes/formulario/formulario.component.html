@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="form-box">
+        <img [src]="logotipo" alt="logotipo" id="logotipo">
+        <h1>{{descTitulo}}</h1>
+        <form [formGroup]="usuarioForm" (ngSubmit)="submit()"> 
+            <!--Passando como atributo "formgroup", pois ele é um componente do tipo formulário-->
+            <div class="input-box">
+                <label for="usuario">Usuário:</label>
+                <input type="text" name="usuario" id="usuario"
+                [ngClass]="{'is-invalid' : usuarioForm.get('usuario') ?.invalid && usuarioForm.get('usuario')?.touched}" 
+                placeholder="Insira o Usuário">
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('usuario')?.invalid && usuarioForm.get('usuario')?.touched">
+                    O usuário é obrigatório
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome"
+                [ngClass]="{'is-invalid': usuarioForm.get('nome') ?.invalid && usuarioForm.get('nome')?.touched}"
+                placeholder="Insira o nome">
+
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('nome')?.invalid && usuarioForm.get('nome')?.touched">
+                    O nome é obrigatório
+                </div>
+
+            </div>
+                <div class="input-box">
+                    <label for="sobrenome">Sobrenome:</label>
+                    <input type="text" name="sobrenome" id="sobrenome"
+                    [ngClass]="{'is-invalid' : usuarioForm.get('sobrenome') ?.invalid && usuarioForm.get ('sobrenome')?.touched}">
+                    <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched"
+                    placeholder="Insira o Sobrenome">
+                        O sobrenome é obrigatório
+                    </div>
+            </div>
+
+            <div class="input-box">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email"
+                [ngClass]="{'is-invalid': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched}"
+                placeholder="Insira o E-mail">
+
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched">
+                    O e-mail é obrigatório
+                </div>
+            </div>
+            <div *ngIf="btnAcao === 'Cadastrar'">
+            <div class="input-box">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha"
+                [ngClass]="{'is-invalid': usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched}"
+                placeholder="Insira a Senha">
+
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched">
+                    A senha é obrigatória
+                </div>
+            </div>
+            <div class="input-box" >
+                <label for="confirm-senha">Confirma Senha:</label>
+                <input type="password" name="confirm-senha" id="confirm-senha"
+                [ngClass]="{'is-invalid':usuarioForm.get('confirmaSenha')?.invalid && usuarioForm.get('confirmaSenha')?.touched}"
+                placeholder="Insira a Confirmação de senha">
+
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('confirmaSenha')?.invalid && usuarioForm.get('confirmaSenha')?.touched">
+                    A confirmação de senha é obrigatória
+                </div>
+
+                <div class="invalid-feedback" *ngIf="usuarioForm.get('confirmaSenha')?.hasError('naoCoincidem') && usuarioForm.get('confirmaSenha')?.touched">
+                    As senhas estão diferentes 
+                </div>
+            </div>
+            </div>
+            <div class="button-box">
+            
+                <button id="voltar" type="button">Voltar</button>
+                <button id="cadastrar" type="submit"> 
+                   {{btnAcao}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
