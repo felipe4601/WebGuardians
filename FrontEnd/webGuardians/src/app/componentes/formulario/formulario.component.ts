@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector:'app-formulario',
-    imports: [ReactiveFormsModule, FormsModule, RouterModule, NgIf, NgClass],
+    imports: [ReactiveFormsModule, FormsModule, RouterModule, NgClass],
     templateUrl: './formulario.component.html',
     styleUrl: './formulario.component.css'
 })

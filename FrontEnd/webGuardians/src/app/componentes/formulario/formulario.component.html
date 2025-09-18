@@ -7,70 +7,94 @@
             <div class="input-box">
                 <label for="usuario">Usuário:</label>
                 <input type="text" name="usuario" id="usuario"
-                [ngClass]="{'is-invalid' : usuarioForm.get('usuario') ?.invalid && usuarioForm.get('usuario')?.touched}" 
-                placeholder="Insira o Usuário">
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('usuario')?.invalid && usuarioForm.get('usuario')?.touched">
-                    O usuário é obrigatório
-                </div>
+                [ngClass]="{'is-invalid' : usuarioForm.get('usuario')?.invalid && usuarioForm.get('usuario')?.touched}" 
+                placeholder="Insira o Usuário" formControlName="usuario">
+
+                @if(usuarioForm.get('usuario')?.invalid && usuarioForm.get('usuario')?.touched){
+                    <div class="invalid-feedback">
+                        O nome é obrigatório
+                    </div>
+                  
+                }
+                
             </div>
 
             <div class="input-box">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome"
-                [ngClass]="{'is-invalid': usuarioForm.get('nome') ?.invalid && usuarioForm.get('nome')?.touched}"
-                placeholder="Insira o nome">
+                [ngClass]="{'is-invalid': usuarioForm.get('nome')?.invalid && usuarioForm.get('nome')?.touched}"
+                placeholder="Insira o nome" formControlName="nome">
 
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('nome')?.invalid && usuarioForm.get('nome')?.touched">
-                    O nome é obrigatório
-                </div>
+                @if(usuarioForm.get('nome')?.invalid && usuarioForm.get('nome')?.touched){
+                    <div class="invalid-feedback">
+                        O nome é obrigatório
+                    </div>
+                }
+                
 
             </div>
                 <div class="input-box">
                     <label for="sobrenome">Sobrenome:</label>
                     <input type="text" name="sobrenome" id="sobrenome"
-                    [ngClass]="{'is-invalid' : usuarioForm.get('sobrenome') ?.invalid && usuarioForm.get ('sobrenome')?.touched}">
-                    <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched"
-                    placeholder="Insira o Sobrenome">
+                    [ngClass]="{'is-invalid' : usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched}" 
+                    placeholder="Insira o Sobrenome" formControlName="sobrenome">
+                    
+                    @if(usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched){
+                        <div class="invalid-feedback">
                         O sobrenome é obrigatório
                     </div>
+                    }
+                    
             </div>
 
             <div class="input-box">
                 <label for="email">E-mail:</label>
                 <input type="email" name="email" id="email"
                 [ngClass]="{'is-invalid': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched}"
-                placeholder="Insira o E-mail">
+                placeholder="Insira o E-mail" formControlName="email">
 
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched">
-                    O e-mail é obrigatório
-                </div>
+                @if(usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched){
+                    <div class="invalid-feedback">
+                        O e-mail é obrigatório
+                    </div>
+                }
+                
             </div>
-            <div *ngIf="btnAcao === 'Cadastrar'">
+            @if(btnAcao === 'Cadastrar'){
+            <div>
             <div class="input-box">
                 <label for="senha">Senha:</label>
                 <input type="password" name="senha" id="senha"
                 [ngClass]="{'is-invalid': usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched}"
-                placeholder="Insira a Senha">
+                placeholder="Insira a Senha" formControlName="senha">
 
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('sobrenome')?.invalid && usuarioForm.get('sobrenome')?.touched">
-                    A senha é obrigatória
-                </div>
+                @if(usuarioForm.get('senha')?.invalid && usuarioForm.get('senha')?.touched){
+                    <div class="invalid-feedback">
+                        A senha é obrigatória
+                    </div>
+                }
+                
             </div>
             <div class="input-box" >
                 <label for="confirm-senha">Confirma Senha:</label>
                 <input type="password" name="confirm-senha" id="confirm-senha"
                 [ngClass]="{'is-invalid':usuarioForm.get('confirmaSenha')?.invalid && usuarioForm.get('confirmaSenha')?.touched}"
-                placeholder="Insira a Confirmação de senha">
+                placeholder="Insira a Confirmação de senha" formControlName="confirmaSenha">
 
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('confirmaSenha')?.invalid && usuarioForm.get('confirmaSenha')?.touched">
-                    A confirmação de senha é obrigatória
+                @if(usuarioForm.get('confirmaSenha')?.invalid && usuarioForm.get('confirmaSenha')?.touched){
+                    <div class="invalid-feedback">
+                        A confirmação de senha é obrigatória
+                    </div>  
+                }
+                
+                @if(usuarioForm.get('confirmarSenha')?.hasError('naoCoincidem') && usuarioForm.get('confirmaSenha')?.touched){
+                    <div class="invalid-feedback">
+                       As senhas estão diferentes 
                 </div>
-
-                <div class="invalid-feedback" *ngIf="usuarioForm.get('confirmaSenha')?.hasError('naoCoincidem') && usuarioForm.get('confirmaSenha')?.touched">
-                    As senhas estão diferentes 
-                </div>
+                }
             </div>
             </div>
+        }
             <div class="button-box">
             
                 <button id="voltar" type="button">Voltar</button>
